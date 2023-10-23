@@ -1,0 +1,8 @@
+path: /Users/sohnchanwoo/yolov5/traffic_lights_1
+train: traffic_lights_1/train/images
+val: traffic_lights_1/valid/images
+test: traffic_lights_1/test/images
+
+nc: 3
+names: ['green','red','yellow']
+

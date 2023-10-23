@@ -1,0 +1,14 @@
+names:
+- green
+- red
+- yellow
+nc: 3
+roboflow:
+  license: CC BY 4.0
+  project: traffic-lights-qh0vp
+  url: https://universe.roboflow.com/version-ou-je-vais-merge/traffic-lights-qh0vp/dataset/1
+  version: 1
+  workspace: version-ou-je-vais-merge
+test: ../test/images
+train: traffic-lights-1/train/images
+val: traffic-lights-1/valid/images

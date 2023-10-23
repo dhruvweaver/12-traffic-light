@@ -1,0 +1,8 @@
+path: /content/yolov5/custom_dataset
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 3
+names: ['green','red','yellow']
+
