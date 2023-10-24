@@ -1,1 +1,7 @@
 .DS_Store
+yolov3.weights
+darknet53.conv.74
+
+*.a
+*.so
+darknet

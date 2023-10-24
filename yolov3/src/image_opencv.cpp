@@ -1,5 +1,9 @@
 #ifdef OPENCV
 
+#include "opencv2/core/core_c.h"
+#include "opencv2/videoio/legacy/constants_c.h"
+#include "opencv2/highgui/highgui_c.h"
+
 #include "stdio.h"
 #include "stdlib.h"
 #include "opencv2/opencv.hpp"
@@ -60,7 +64,7 @@ Mat image_to_mat(image im)
 
 image mat_to_image(Mat m)
 {
-    IplImage ipl = m;
+    IplImage ipl = cvIplImage(m);
     image im = ipl_to_image(&ipl);
     rgbgr_image(im);
     return im;
@@ -121,7 +125,7 @@ int show_image_cv(image im, const char* name, int ms)
 
 void make_window(char *name, int w, int h, int fullscreen)
 {
-    namedWindow(name, WINDOW_NORMAL); 
+    namedWindow(name, WINDOW_NORMAL);
     if (fullscreen) {
         setWindowProperty(name, CV_WND_PROP_FULLSCREEN, CV_WINDOW_FULLSCREEN);
     } else {
