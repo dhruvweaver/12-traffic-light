@@ -34,7 +34,11 @@ Run this line.
 
 ## For training YOLO V3:
 ***(Training instructions unfinished)***
+
 Visit GitHub page for more: https://github.com/ultralytics/yolov3
+
 Open yolov3-ultralytics
+
 Run pip install -r requirements.txt
 
+python train.py --data roboflow/data.yaml --epochs 3 --weights '' --cfg yolov5n.yaml --batch-size 64
