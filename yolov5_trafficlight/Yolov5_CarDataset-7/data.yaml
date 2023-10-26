@@ -1,0 +1,19 @@
+names:
+- 30km
+- 50km
+- 60km
+- 70km
+- green
+- red
+- red-
+- yellow
+nc: 8
+roboflow:
+  license: CC BY 4.0
+  project: yolov5_cardataset
+  url: https://universe.roboflow.com/yolov5-traffic-light-dataset/yolov5_cardataset/dataset/7
+  version: 7
+  workspace: yolov5-traffic-light-dataset
+test: ../test/images
+train: Yolov5_CarDataset-7/train/images
+val: Yolov5_CarDataset-7/valid/images
