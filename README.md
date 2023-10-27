@@ -1,6 +1,16 @@
 # Team 12 Capstone Project: Traffic Light Detection
 Central repository for the traffic light detection capstone project.
 
+### Table of Contents
+
+[Getting started](https://github.com/dhruvweaver/12-traffic-light#getting-started)
+    
+[Training YOLOv3](https://github.com/dhruvweaver/12-traffic-light#training-yolov3)
+
+[Running YOLOv3](https://github.com/dhruvweaver/12-traffic-light#running-yolov3-model)
+
+_[Running YOLOv5 Demo](https://github.com/dhruvweaver/12-traffic-light#instructions-for-running-yolov5-model-for-demo-only) (legacy)_
+
 ## Getting started:
 To begin working you will need to clone this repository.
 Choose a directory you would like to work in (such as a 'development' directory).
@@ -65,9 +75,7 @@ When your conda environment is active, your terminal prompt will look something 
 (base)[foo@bar]$
 ```
 
-## For training YOLOv3:
-***(Training instructions unfinished)***
-
+## Training YOLOv3:
 Visit source GitHub page for more: https://github.com/ultralytics/yolov3
 
 Open directory
@@ -107,7 +115,7 @@ To test the model, run the following command within the 'yolov3-ultralytics' dir
 [foo@bar]$ python3 detect.py --weights "../vision-prototype/exp5/weights/best.pt" --source 0
 ```
 
-## Instructions for running YOLOv5 model (for demo only):
+## Instructions for running YOLOv5 model (for demo only, directory archived):
 Install the following pip dependencies:
 
 torch, numpy, ultralytics
