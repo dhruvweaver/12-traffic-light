@@ -99,6 +99,14 @@ The notebook contains code that will download the dataset as well as train the m
 
 **Training without a powerful GPU (especially without CUDA) will be pretty slow, especially at high epochs.**
 
+## Running YOLOv3 model:
+After the model is trained, place the results in the 'vision-prototype' directory.
+
+To test the model, run the following command within the 'yolov3-ultralytics' directory:
+```bash
+[foo@bar]$ python3 detect.py --weights "../vision-prototype/exp5/weights/best.pt" --source 0
+```
+
 ## Instructions for running YOLOv5 model (for demo only):
 Install the following pip dependencies:
 
