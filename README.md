@@ -74,6 +74,11 @@ When your conda environment is active, your terminal prompt will look something 
 ```bash
 (base)[foo@bar]$
 ```
+## Custom Data Set (Traffic light Detection for only red and yellow lights):
+Used Roboflow to collect images and labels. It contains 1906 images of red and yellow light. Download this dataset to train Yolo.
+<a href="https://universe.roboflow.com/traffic-light-detection-qsrxn/traffic-light-oq7uj">
+    <img src="https://app.roboflow.com/images/download-dataset-badge.svg"></img>
+</a>
 
 ## Training YOLOv3:
 Visit source GitHub page for more: https://github.com/ultralytics/yolov3
@@ -128,7 +133,4 @@ Scroll to the line that reads:
 ```
 Run this line.
 
-## Custom Data Set:
-<a href="https://universe.roboflow.com/traffic-light-detection-qsrxn/traffic-light-oq7uj">
-    <img src="https://app.roboflow.com/images/download-dataset-badge.svg"></img>
-</a>
+
