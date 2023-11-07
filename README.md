@@ -119,6 +119,13 @@ To test the model, run the following command within the 'yolov3-ultralytics' dir
 ```bash
 [foo@bar]$ python3 detect.py --weights "../vision-prototype/exp5/weights/best.pt" --source 0
 ```
+## Changing weight file(.pt) to .pb 
+
+Run the following command to change .pt file(Pytorch) to .pb file(TensorFlow GraphDef)
+```bash
+[foo@bar]$ python3 export.py --weights "../vision-prototype/custom-train/weights/best.pt" --include pb
+
+```
 
 ## Instructions for running YOLOv5 model (for demo only, directory archived):
 Install the following pip dependencies:
