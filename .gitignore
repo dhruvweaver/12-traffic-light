@@ -2,9 +2,7 @@
 yolov3.weights
 darknet53.conv.74
 
-traffic_lights-1
-traffic-light-2
-traffic-light-11
+traffic-light-25
 
 *.a
 *.so

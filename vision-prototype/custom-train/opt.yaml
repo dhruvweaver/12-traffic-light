@@ -1,6 +1,6 @@
 weights: ''
-cfg: /home/dhruv/development/osu/capstone/yolov3-ultralytics/models/yolov5s.yaml
-data: ./traffic-light-11/data.yaml
+cfg: /home/dhruv/development/osu/capstone/yolov3-ultralytics/models/yolov5n.yaml
+data: ./traffic-light-25/data.yaml
 hyp:
   lr0: 0.01
   lrf: 0.01
@@ -30,7 +30,7 @@ hyp:
   mosaic: 1.0
   mixup: 0.0
   copy_paste: 0.0
-epochs: 5000
+epochs: 2000
 batch_size: 32
 imgsz: 640
 rect: false
@@ -65,4 +65,4 @@ entity: null
 upload_dataset: false
 bbox_interval: -1
 artifact_alias: latest
-save_dir: runs/train/exp2
+save_dir: runs/train/exp6
