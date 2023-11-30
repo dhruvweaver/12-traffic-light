@@ -1,0 +1,13 @@
+names:
+- red
+- yellow
+nc: 2
+roboflow:
+  license: CC BY 4.0
+  project: traffic-light-oq7uj
+  url: https://universe.roboflow.com/traffic-light-detection-qsrxn/traffic-light-oq7uj/dataset/13
+  version: 13
+  workspace: traffic-light-detection-qsrxn
+test: ../test/images
+train: traffic-light-13/train/images
+val: traffic-light-13/valid/images
