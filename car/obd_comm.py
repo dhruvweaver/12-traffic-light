@@ -1,29 +1,32 @@
 import time
 import obd
 
+
 class brakeStatus:
-    #create list to store speed value and diff
-    def initV (self):
+    # create list to store speed value and diff
+    def initV(self):
         self.speed = [0] * 5
         self.speedDiff = [0] * 4
 
-    #append and remove the current speed 
+    # append and remove the current speed
     def updateSpeed(self, currentSpeed):
         self.speed.append(currentSpeed)
         self.speed.pop(0)
-    
-    #calculate speed diff between the latest and oldest entries
+
+    # calculate speed diff between the latest and oldest entries
     def calSpeedDiff(self):
         diff = self.speed[4] - self.speed[0]
-        #update the speed diff list
+        # update the speed diff list
         self.speedDiff.append(diff)
         self.speedDiff.pop(0)
-    #check speed diff are negative to indicate slowing down
+
+    # check speed diff are negative to indicate slowing down
     def checkBrakeStatus(self):
         for i in self.speedDiff:
             if i >= 0:
                 return False
         return True
+
 
 # wait time
 time.sleep(0.1)
@@ -42,12 +45,12 @@ if portNum:
             if not speedCmd.is_null():
                 speed = speedCmd.value.magnitude
                 print(f"Driving speed: {speed} mile/h ")
-                
-                #update brake status with the current speed and speed diff
-                brake_status.updateSpeed(speed) 
+
+                # update brake status with the current speed and speed diff
+                brake_status.updateSpeed(speed)
                 brake_status.calSpeedDiff()
 
-                #check and print 
+                # check and print
                 check = brake_status.checkBrakeStatus()
                 if check:
                     print("Braking Status: Slowing Down")
