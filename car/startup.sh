@@ -1,1 +1,1 @@
-python obd_comm.py
+python ~/capstone/car/obd_comm.py
