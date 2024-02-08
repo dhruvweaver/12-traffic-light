@@ -15,13 +15,8 @@ class brakeStatus:
 
     # calculate speed diff between the latest and oldest entries
     def calSpeedDiff(self):
-<<<<<<< Updated upstream
-        diff = self.speed[4] - self.speed[0]
-        # update the speed diff list
-=======
         diff = self.speed[4] - self.speed[3]
         #update the speed diff list
->>>>>>> Stashed changes
         self.speedDiff.append(diff)
         self.speedDiff.pop(0)
 
