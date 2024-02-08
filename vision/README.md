@@ -1,10 +1,11 @@
-# Team 12 Capstone Project: Traffic Light Detection
-Central repository for the traffic light detection capstone project.
+# Computer Vision Using YOLO
+This directory contains the code and output files of the computer vision component
+for the traffic light detection capstone project.
 
 ### Table of Contents
 
 [Getting started](https://github.com/dhruvweaver/12-traffic-light#getting-started)
-    
+
 [Training YOLOv3](https://github.com/dhruvweaver/12-traffic-light#training-yolov3)
 
 [Running YOLOv3](https://github.com/dhruvweaver/12-traffic-light#running-yolov3-model)
@@ -119,7 +120,7 @@ To test the model, run the following command within the 'yolov3-ultralytics' dir
 ```bash
 [foo@bar]$ python3 detect.py --weights "../vision-prototype/exp5/weights/best.pt" --source 0
 ```
-## Changing weight file(.pt) to .pb 
+## Changing weight file(.pt) to .pb
 
 Run the following command to change .pt file(Pytorch) to .pb file(TensorFlow GraphDef)
 ```bash
