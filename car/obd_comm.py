@@ -72,7 +72,7 @@ while True:
                         print("Braking Status: Not Slowing Down")
                         GPIO.output(14, GPIO.HIGH)  # turn on acceleration LED
                         GPIO.output(15, GPIO.LOW)   #turn off brake LED
-                else
+                else:
                     print("Speed data not received")
                     GPIO.output(18, GPIO.LOW) # turn off speed LED
                     
