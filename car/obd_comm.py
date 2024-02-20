@@ -37,7 +37,7 @@ GPIO.setup(18, GPIO.OUT)  # getting speed measurements LED
 GPIO.setup(27, GPIO.OUT)  # Check for programing is running 
 
 while True:
-    GPIO.output(26, GPIO.HIGH)
+    GPIO.output(27, GPIO.HIGH)
     # wait time
     time.sleep(0.1)
     # create OBD connection and return list of valid USB
@@ -51,10 +51,10 @@ while True:
             GPIO.output(17, GPIO.HIGH)
             
             while True:
-                GPIO.output(18, GPIO.HIGH)  
                 # send command and recieve response
                 speedCmd = connection.query(obd.commands.SPEED)
                 if not speedCmd.is_null():
+                    GPIO.output(18, GPIO.HIGH)  # turn on speed LED if speed data received
                     speed = speedCmd.value.magnitude
                     print(f"Driving speed: {speed} mile/h ")
                     
@@ -72,11 +72,17 @@ while True:
                         print("Braking Status: Not Slowing Down")
                         GPIO.output(14, GPIO.HIGH)  # turn on acceleration LED
                         GPIO.output(15, GPIO.LOW)   #turn off brake LED
+                else
+                    print("Speed data not received")
+                    GPIO.output(18, GPIO.LOW) # turn off speed LED
+                    
                 # add a delay between queries to avoid overwhelming the OBD system
                 time.sleep(0.5)
         else:
             print("failed to established OBD connection")
+            GPIO.output(17, GPIO.LOW)
     else:
         print("no valid USB ports found")
 
-    GPIO.output(26, GPIO.LOW)
+    GPIO.output(27, GPIO.LOW) # turn off LED for a moment to create blinking effect
+    time.sleep(0.5) # sleep a small amount of time so blinking is visible
