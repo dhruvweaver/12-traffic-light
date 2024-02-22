@@ -1,6 +1,7 @@
 import time
 import obd
 import RPi.GPIO as GPIO #install the GPIO Python Library
+import self as self
 
 class brakeStatus:
     # create list to store speed value and diff
