@@ -43,7 +43,7 @@ while True:
     # create OBD connection and return list of valid USB
     portNum = obd.scan_serial()
 
-    if portNum:
+    if len(portNum) > 0: # if any ports exist in the list
         # connect to the first port in the list
         connection = obd.OBD(portNum[0])
         if connection.is_connected():
