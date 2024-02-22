@@ -37,50 +37,47 @@ GPIO.setup(18, GPIO.OUT)  # getting speed measurements LED
 GPIO.setup(27, GPIO.OUT)  # Check for programing is running 
 
 while True:
-    GPIO.output(27, GPIO.HIGH)
-    # wait time
-    time.sleep(0.1)
+    GPIO.output(27, GPIO.HIGH) # turn on running light
     # create OBD connection and return list of valid USB
     portNum = obd.scan_serial()
 
     if len(portNum) > 0: # if any ports exist in the list
         # connect to the first port in the list
         connection = obd.OBD(portNum[0])
-        if connection.is_connected():
+        
+        while connection.is_connected():
             brake_status = brakeStatus()
-            GPIO.output(17, GPIO.HIGH)
-            
-            while True:
-                # send command and recieve response
-                speedCmd = connection.query(obd.commands.SPEED)
-                if not speedCmd.is_null():
-                    GPIO.output(18, GPIO.HIGH)  # turn on speed LED if speed data received
-                    speed = speedCmd.value.magnitude
-                    print(f"Driving speed: {speed} mile/h ")
-                    
-                    # update brake status with the current speed and speed diff
-                    brake_status.updateSpeed(speed)
-                    brake_status.calSpeedDiff()
+            GPIO.output(17, GPIO.HIGH) # turn on connection LED
+            # send command and recieve response
+            speedCmd = connection.query(obd.commands.SPEED)
+            if not speedCmd.is_null():
+                GPIO.output(18, GPIO.HIGH)  # turn on speed LED if speed data received
+                speed = speedCmd.value.to("mph").magnitude
+                print(f"Driving speed: {speed} mile/h ")
+                
+                # update brake status with the current speed and speed diff
+                brake_status.updateSpeed(speed)
+                brake_status.calSpeedDiff()
 
-                    # check and print
-                    check = brake_status.checkBrakeStatus()
-                    if check:
-                        print("Braking Status: Slowing Down")
-                        GPIO.output(15, GPIO.HIGH)  # turn on brake LED
-                        GPIO.output(14, GPIO.LOW)   # turn off acceleration LED
-                    else:
-                        print("Braking Status: Not Slowing Down")
-                        GPIO.output(14, GPIO.HIGH)  # turn on acceleration LED
-                        GPIO.output(15, GPIO.LOW)   #turn off brake LED
+                # check and print
+                check = brake_status.checkBrakeStatus()
+                if check:
+                    print("Braking Status: Slowing Down")
+                    GPIO.output(15, GPIO.HIGH)  # turn on brake LED
+                    GPIO.output(14, GPIO.LOW)   # turn off acceleration LED
                 else:
-                    print("Speed data not received")
-                    GPIO.output(18, GPIO.LOW) # turn off speed LED
-                    
-                # add a delay between queries to avoid overwhelming the OBD system
-                time.sleep(0.5)
-        else:
-            print("failed to established OBD connection")
-            GPIO.output(17, GPIO.LOW)
+                    print("Braking Status: Not Slowing Down")
+                    GPIO.output(14, GPIO.HIGH)  # turn on acceleration LED
+                    GPIO.output(15, GPIO.LOW)   #turn off brake LED
+            else:
+                print("Speed data not received")
+                GPIO.output(18, GPIO.LOW) # turn off speed LED
+                
+            # add a delay between queries to avoid overwhelming the OBD system
+            time.sleep(0.5)
+                
+        print("Failed to establish OBD connection")
+        GPIO.output(17, GPIO.LOW) # turn off connection LED
     else:
         print("no valid USB ports found")
 
