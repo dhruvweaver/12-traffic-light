@@ -7,3 +7,6 @@ traffic-light-25
 *.a
 *.so
 darknet
+
+# binaries:
+*.o
