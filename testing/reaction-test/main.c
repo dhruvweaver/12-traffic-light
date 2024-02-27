@@ -21,7 +21,9 @@ int react(int image_n) {
     // wait for interrupt
     getchar();
 
-    #ifdef __APPLE__
+    #ifdef __linux__
+        system("pkill -x eof");
+    #elif __APPLE__
         system("pkill -x Preview");
     #endif
 
