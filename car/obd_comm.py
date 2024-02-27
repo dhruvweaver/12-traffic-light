@@ -4,7 +4,7 @@ import RPi.GPIO as GPIO #install the GPIO Python Library
 
 class brakeStatus:
     # create list to store speed value and diff
-    def initV(self):
+    def __init__(self):
         self.speed = [0] * 5
         self.speedDiff = [0] * 4
 
