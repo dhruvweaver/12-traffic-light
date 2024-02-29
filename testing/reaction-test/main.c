@@ -12,8 +12,16 @@ int react(int image_n) {
     // display image
     printf("\nimage %d\n", image_n);
 
+    // refactor to function 'openImage()'
     #ifdef __linux__
-        system("eog ./light_0.jpg");
+        // open on background thread?
+        pid_t x = fork();
+        if (x == 0) {
+            system("eog ./light_0.jpg");
+            exit(0);
+        } else if (x < 0) {
+            printf("failed to start child process\n");
+        }
     #elif __APPLE__
         system("open ./light_0.jpg");
     #endif
@@ -21,8 +29,9 @@ int react(int image_n) {
     // wait for interrupt
     getchar();
 
+    // refactor to function 'closeImage()'
     #ifdef __linux__
-        system("pkill -x eof");
+        system("pkill -x eog");
     #elif __APPLE__
         system("pkill -x Preview");
     #endif
