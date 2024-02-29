@@ -65,7 +65,7 @@ while True:
             GPIO.output(17, GPIO.HIGH) # turn on connection LED
             # send command and recieve response
             speedCmd = connection.query(obd.commands.SPEED)
-            print(f"status of speedCmd.is_null(): {speedCmd.is_null()}) # debug
+            print(f"status of speedCmd.is_null(): {speedCmd.is_null()}") # debug
             if not speedCmd.is_null():
                 GPIO.output(18, GPIO.HIGH)  # turn on speed LED if speed data received
                 speed = speedCmd.value.to("mph").magnitude
