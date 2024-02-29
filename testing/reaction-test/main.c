@@ -1,7 +1,35 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <unistd.h>
 #include <sys/time.h>
+
+void openImage(char * img_pth) {
+    #ifdef __linux__
+        pid_t x = fork();
+        if (x == 0) {
+            char buf[256];
+            snprintf(buf, sizeof(buf), "eog %s", img_pth);
+            system(buf);
+
+            exit(0);
+        } else if (x < 0) {
+            printf("failed to start child process\n");
+        }
+    #elif __APPLE__
+        char buf[32];
+        snprintf(buf, sizeof(buf), "open %s", img_pth);
+        system(buf);
+    #endif
+}
+
+void closeImage() {
+    #ifdef __linux__
+        system("pkill -x eog");
+    #elif __APPLE__
+        system("pkill -x Preview");
+    #endif
+}
 
 int react(int image_n) {
     struct timeval tv;
@@ -11,30 +39,19 @@ int react(int image_n) {
     long long time_start = (((long long)tv.tv_sec)*1000)+(tv.tv_usec/1000);
     // display image
     printf("\nimage %d\n", image_n);
+    // generate path to image
+    char img_pth[32];
+    snprintf(img_pth, sizeof(img_pth), "./images/light_%d.jpg", image_n);
+    printf("path: %s\n", img_pth);
 
-    // refactor to function 'openImage()'
-    #ifdef __linux__
-        // open on background thread?
-        pid_t x = fork();
-        if (x == 0) {
-            system("eog ./light_0.jpg");
-            exit(0);
-        } else if (x < 0) {
-            printf("failed to start child process\n");
-        }
-    #elif __APPLE__
-        system("open ./light_0.jpg");
-    #endif
+    // open image in a new window
+    openImage(img_pth);
 
     // wait for interrupt
     getchar();
 
-    // refactor to function 'closeImage()'
-    #ifdef __linux__
-        system("pkill -x eog");
-    #elif __APPLE__
-        system("pkill -x Preview");
-    #endif
+    // close image window
+    closeImage();
 
     // end timing
     gettimeofday(&tv,NULL);
