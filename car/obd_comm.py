@@ -31,7 +31,7 @@ class brakeStatus:
     def checkBrakeStatus(self):
         print("inside checkBrakeStatus()")
         for i in self.speedDiff:
-            print(f"speedDiff[{i}] = {speedDiff[i]}") # debug | example of intended output: "speedDiff[2] = -20"
+            print(f"speedDiff[{i}] = {self.speedDiff[i]}") # debug | example of intended output: "speedDiff[2] = -20"
             if speedDiff[i] >= 0:
                 return False
         return True
