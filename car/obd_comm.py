@@ -57,7 +57,7 @@ while True:
         # connect to the first port in the list
         connection = obd.OBD(portNum[0])
 
-        print(f"status of connection: {connect.is_connected()}") # debug
+        print(f"status of connection: {connection.is_connected()}") # debug
         while connection.is_connected():
             print("inside while connection.is_connected()") # debug
             brake_status = brakeStatus()
