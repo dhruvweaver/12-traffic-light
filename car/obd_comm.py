@@ -57,12 +57,11 @@ while True:
         # connect to the first port in the list
         connection = obd.OBD(portNum[0])
         brake_status = brakeStatus() # create new brakeStatus object
+        print(f"break status: {bool(brake_status)}") # debug
 
         print(f"status of connection: {connection.is_connected()}") # debug
         while connection.is_connected():
             print("inside while connection.is_connected()") # debug
-    
-            print(f"break status: {bool(brake_status)}") # debug
             GPIO.output(17, GPIO.HIGH) # turn on connection LED
             # send command and recieve response
             speedCmd = connection.query(obd.commands.SPEED)
