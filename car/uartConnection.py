@@ -1,3 +1,4 @@
+
 #hardware connection: 
 #Connect the UART TX pin of the Raspberry Pi to FPGA'S UART RX pin
 #Connect the UART RX pin of the Raspberry Pi to the FPGA's UART TX pin
@@ -23,3 +24,4 @@ while True:
     #add delay
     time.sleep(1)
     
+
