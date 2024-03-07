@@ -7,7 +7,8 @@ import RPi.GPIO as GPIO #install the GPIO Python Library
 import logging
 
 # configure logging
-logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="w", format="%(asctime)s : %(message)s")
+#     filemode: "w" is overwrite, "a" is append
+logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="a", format="%(asctime)s : %(message)s")
 
 class brakeStatus:
     # create list to store speed value and diff
