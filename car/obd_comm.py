@@ -120,6 +120,8 @@ while True:
     else:
         print("no valid USB ports found") # debug
         logging.debug("no valid USB ports found") # debug
+        GPIO.output(17, GPIO.LOW) # turn off connection LED
+        GPIO.output(18, GPIO.LOW) # turn off speed LED
 
     GPIO.output(27, GPIO.LOW) # turn off LED for a moment to create blinking effect
     time.sleep(0.5) # sleep a small amount of time so blinking is visible
