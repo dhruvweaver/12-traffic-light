@@ -112,7 +112,7 @@ while True:
                 GPIO.output(18, GPIO.LOW) # turn off speed LED
                 
             # add a delay between queries to avoid overwhelming the OBD system
-            time.sleep(0.1)
+            time.sleep(0.5)
                 
         print("Failed to establish OBD connection") # debug
         logging.debug("Failed to establish OBD connection") # debug
