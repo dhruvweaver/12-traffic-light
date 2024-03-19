@@ -2,7 +2,7 @@ import time
 import obd
 import logging
 
-logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="a", format="%(asctime)s : %(message)s")
+logging.basicConfig(level=logging.DEBUG, filename="speed_log.log", filemode="a", format="%(asctime)s : %(message)s")
 
 ports = obd.scan_serial()
 connection = obd.OBD(ports[0])
