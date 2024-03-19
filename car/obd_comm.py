@@ -26,7 +26,7 @@ def calcSpeedDiff():
 
 # isBraking speed diff are negative to indicate slowing down
 def checkBrakeStatus():
-    logging.debug(f"inside checkBrakeStatus(), speedDiff = {self.speedDiff[3]}") 
+    logging.debug(f"inside checkBrakeStatus(), speedDiff = {speedDiff[3]}") 
     #for i in speedDiff:
      #   print(f"speedDiff[{i}] = {speedDiff[i]}")  | example of intended output: "speedDiff[2] = -20"
       #  if speedDiff[i] >= 0:
