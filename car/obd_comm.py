@@ -28,7 +28,7 @@ def calcSpeedDiff():
 def checkBrakeStatus():
     logging.debug(f"inside checkBrakeStatus(), speedDiff = {speedDiff[3]}") 
     #for i in speedDiff:
-     #   print(f"speedDiff[{i}] = {speedDiff[i]}")  | example of intended output: "speedDiff[2] = -20"
+     #   print(f"speedDiff[{i}] = {speedDiff[i]}")  # example of intended output: "speedDiff[2] = -20"
       #  if speedDiff[i] >= 0:
        #     return False
     if speedDiff[3] >= 0: # only isBraking most recent measurement
