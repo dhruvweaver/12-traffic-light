@@ -14,5 +14,6 @@ logging.debug(f"status of connection: {connection.is_connected()}")
 while True:
   response = connection.query(cmd)
   speed = response.value.to("mph").magnitude
-  logging.debug(f"Driving speed: {speed} mile/h")
+  logging.debug(f"status of connection: {connection.is_connected()}")
+  logging.debug(f"driving speed: {speed} mile/h")
   time.sleep(0.5)
