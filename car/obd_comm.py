@@ -34,7 +34,7 @@ class brakeStatus:
          #   print(f"speedDiff[{i}] = {self.speedDiff[i]}")  | example of intended output: "speedDiff[2] = -20"
           #  if self.speedDiff[i] >= 0:
            #     return False
-        if self.speedDiff[3] >= 0: : only isBraking most recent measurement
+        if self.speedDiff[3] >= 0: # only isBraking most recent measurement
             return False
         else:
             return True
