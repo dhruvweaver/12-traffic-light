@@ -34,10 +34,6 @@ def checkBrakeStatus():
         elif i >= 0: # if any of the measurements in the speedDiff array are positive, it's not braking
             return False
     return True
-    
-        if i >= 0:
-            return False
-    return True
 
 ports = obd.scan_serial()
 connection = obd.OBD(ports[0])
