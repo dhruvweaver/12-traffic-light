@@ -26,15 +26,16 @@ def calcSpeedDiff():
 
 # isBraking speed diff are negative to indicate slowing down
 def checkBrakeStatus():
-    logging.debug(f"inside checkBrakeStatus(), speedDiff = {speedDiff[3]}") 
-    #for i in speedDiff:
-     #   print(f"speedDiff[{i}] = {speedDiff[i]}")  # example of intended output: "speedDiff[2] = -20"
-      #  if speedDiff[i] >= 0:
-       #     return False
-    if speedDiff[3] >= 0: # only isBraking most recent measurement
-        return False
-    else:
-        return True
+    logging.debug("inside checkBrakeStatus()") 
+    for i in speedDiff:
+        print(f"speedDiff = {i}")
+        if i >= 0:
+            return False
+    return True
+    #if speedDiff[3] >= 0: # only isBraking most recent measurement
+        #return False
+    #else:
+        #return True
 
 ports = obd.scan_serial()
 connection = obd.OBD(ports[0])
@@ -61,4 +62,4 @@ while True:
         logging.debug("Braking Status: Not Slowing Down") 
                 
     # add a delay between queries to avoid overwhelming the OBD system
-    time.sleep(0.5)
+    time.sleep(0.1)
