@@ -22,4 +22,4 @@ while True:
     
     #add delay
     time.sleep(1)
-    
+    print("test")
