@@ -28,7 +28,7 @@ def calcSpeedDiff():
 def checkBrakeStatus():
     logging.debug("inside checkBrakeStatus()") 
     for i in speedDiff:
-        print(f"speedDiff = {i}")
+        logging.debug(f"speedDiff = {i}")
         if i >= 0:
             return False
     return True
