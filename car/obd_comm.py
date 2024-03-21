@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="a", format="%(asctime)s : %(message)s")
 
 speedData = [0] * 5
-speedDiff = [0] * 4
+speedDiff = [0] * 3
 
 # append and remove the current speed
 def updateSpeed(currentSpeed):
@@ -58,4 +58,4 @@ while True:
         logging.debug("Braking Status: Not Slowing Down") 
                 
     # add a delay between queries to avoid overwhelming the OBD system
-    time.sleep(0.1)
+    time.sleep(0.5)
