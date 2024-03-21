@@ -32,10 +32,6 @@ def checkBrakeStatus():
         if i >= 0:
             return False
     return True
-    #if speedDiff[3] >= 0: # only isBraking most recent measurement
-        #return False
-    #else:
-        #return True
 
 ports = obd.scan_serial()
 connection = obd.OBD(ports[0])
