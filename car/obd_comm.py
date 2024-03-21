@@ -17,7 +17,7 @@ def updateSpeed(currentSpeed):
 
 # calculate speed diff between the latest and oldest entries
 def calcSpeedDiff():
-    diff = speedData[4] - speedData[3]
+    diff = speedData[len(speedData)-1] - speedData[len(speedData)-2]
     logging.debug(f"inside calcSpeedDiff(), speed difference: {diff}") 
     #update the speed diff list
     speedDiff.pop(0)
