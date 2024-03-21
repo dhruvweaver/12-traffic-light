@@ -29,6 +29,12 @@ def checkBrakeStatus():
     logging.debug("inside checkBrakeStatus()") 
     for i in speedDiff:
         logging.debug(f"speedDiff = {i}")
+        if speedData[len(speedData)-1] == 0: # stopped counts as braking
+            return True
+        elif i >= 0: # if any of the measurements in the speedDiff array are positive, it's not braking
+            return False
+    return True
+    
         if i >= 0:
             return False
     return True
@@ -53,9 +59,9 @@ while True:
     isBraking = checkBrakeStatus()
     
     if isBraking:
-        logging.debug("Braking Status: Slowing Down") 
+        logging.debug("Status: Braking ***********************") 
     else:
-        logging.debug("Braking Status: Not Slowing Down") 
+        logging.debug("Status: Accelerating") 
                 
     # add a delay between queries to avoid overwhelming the OBD system
     time.sleep(0.5)
