@@ -9,34 +9,40 @@ logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="a", f
 speedData = [0] * 5
 speedDiff = [0] * 3
 
-# append and remove the current speed
+# remove oldest speed from array, add current speed
 def updateSpeed(currentSpeed):
     logging.debug(f"inside updateSpeed(), speed = {currentSpeed}") 
     speedData.pop(0)
     speedData.append(currentSpeed)
 
-# calculate speed diff between the latest and oldest entries
+# calculate speed difference between latest two measurements
+# remove oldest difference from array, add current
 def calcSpeedDiff():
     diff = speedData[len(speedData)-1] - speedData[len(speedData)-2]
     logging.debug(f"inside calcSpeedDiff(), speed difference: {diff}") 
-    #update the speed diff list
     speedDiff.pop(0)
     speedDiff.append(diff)
     
 
-# isBraking speed diff are negative to indicate slowing down
+# check if vehicle is braking over multiple measurements
+# return true if stopped
+# return false if any speed differences in array are positive
+# return true otherwise
 def checkBrakeStatus():
     logging.debug("inside checkBrakeStatus()") 
     for i in speedDiff:
         logging.debug(f"speedDiff = {i}")
         if speedData[len(speedData)-1] == 0: # stopped counts as braking
             return True
-        elif i >= 0: # if any of the measurements in the speedDiff array are positive, it's not braking
+        elif i >= 0: # accelerating and constant speed are not braking
             return False
-    return True
+    return True # if execution made it this far without returning, it must be braking
 
+# find port of OBD adapter and connect to it
 ports = obd.scan_serial()
 connection = obd.OBD(ports[0])
+
+# prepare the command to query speed
 cmd = obd.commands.SPEED
 
 logging.debug(f"number of ports found: {len(ports)}")
@@ -47,13 +53,13 @@ while True:
     speed = response.value.to("mph").magnitude
     logging.debug(f"Driving speed: {speed} mile/h") 
                 
-    # update brake status with the current speed and speed diff
+    # update current speed and speed difference
     updateSpeed(speed)
     calcSpeedDiff()
 
-    # isBraking and print
+    # determine whether vehicle is braking
     isBraking = checkBrakeStatus()
-    
+
     if isBraking:
         logging.debug("Status: Braking ***********************") 
     else:
