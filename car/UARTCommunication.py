@@ -7,18 +7,13 @@ import serial
 import time
 
 #configure the serial port
-ser = serial.Serial("/dev/cu.usbserial", 9600)
+ser = serial.Serial("/dev/ttyS0", 9600)
 
 while True:
     #send data to FPGA
     sendData = "Hi, FPGA!"
     ser.write(sendData.encode('utf-8'))
     print(f"Sent: {sendData}")
-
-    #receving data from FPGA
-    recivedData = ser.readline().decode('utf-8').strip()
-    if recivedData:
-        print(f"Recived: {recivedData}")
-    
+  
     #add delay
     time.sleep(1)
