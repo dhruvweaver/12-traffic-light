@@ -7,7 +7,7 @@ import serial
 import time
 
 #configure the serial port
-ser = serial.Serial("/dev/ttyS0", 9600)
+ser = serial.Serial("/dev/ttyS0\n", 9600)
 
 while True:
     #send data to FPGA
