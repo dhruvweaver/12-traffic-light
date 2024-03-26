@@ -14,12 +14,6 @@ while True:
     sendData = "Hi, FPGA!"
     ser.write(sendData.encode('utf-8'))
     print(f"Sent: {sendData}")
-
-    #receving data from FPGA
-    recivedData = ser.readline().decode('utf-8').strip()
-    if recivedData:
-        print(f"Recived: {recivedData}")
-    
+  
     #add delay
     time.sleep(1)
-    
