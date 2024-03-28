@@ -8,13 +8,13 @@ import time
 import subprocess
 import os
 
-#give permissions to write
-subprocess.run("sudo chmod 666 /dev/ttyS0", shell=True)
-
 #configure the serial port
 ser = serial.Serial("/dev/ttyS0", 9600)
 
 while True:
+    #give permissions to write
+    subprocess.run("sudo chmod 666 /dev/ttyS0", shell=True)
+    
     #send data to FPGA
     speed = 250
     braking = "B"
