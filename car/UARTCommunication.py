@@ -5,6 +5,10 @@
 
 import serial
 import time
+import os
+
+#give permissions to write
+os.write("sudo chmod 666 /dev/ttyS0")
 
 #configure the serial port
 ser = serial.Serial("/dev/ttyS0", 9600)
