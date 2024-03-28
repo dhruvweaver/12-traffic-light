@@ -5,8 +5,8 @@
 
 import serial
 import time
-import subprocess
-import os
+#import subprocess
+#import os
 
 #configure the serial port
 ser = serial.Serial("/dev/ttyS0", 9600)
