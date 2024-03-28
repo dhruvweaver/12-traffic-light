@@ -1,10 +1,14 @@
 import time
 import obd
 import logging
+import serial
 
 # configure logging
 #     filemode: "w" is overwrite, "a" is append
 logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="a", format="%(asctime)s : %(message)s")
+
+#configure the serial port
+ser = serial.Serial("/dev/ttyS0", 9600)
 
 speedData = [0] * 5
 speedDiff = [0] * 3
@@ -62,8 +66,12 @@ while True:
 
     if isBraking:
         logging.debug("Status: Braking ***********************") 
+        sendData = f"B {speed}\r\n"
+        ser.write(bytes(sendData,'utf-8'))
     else:
-        logging.debug("Status: Accelerating") 
+        logging.debug("Status: Accelerating")
+        sendData = f"A {speed}\r\n"
+        ser.write(bytes(sendData,'utf-8'))
                 
     # add a delay between queries to avoid overwhelming the OBD system
     time.sleep(0.5)
