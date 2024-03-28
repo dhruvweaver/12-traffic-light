@@ -11,7 +11,9 @@ ser = serial.Serial("/dev/ttyS0", 9600)
 
 while True:
     #send data to FPGA
-    sendData = "Hi, FPGA!\r\n"
+    speed = 250
+    braking = "B"
+    sendData = f"{braking} {speed}\r\n"
     ser.write(sendData.encode('utf-8'))
     print(f"Sent: {sendData}")
   
