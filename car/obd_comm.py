@@ -45,9 +45,10 @@ def checkBrakeStatus():
 logging.debug("------------------ start of new session ------------------")
 
 # find port of OBD adapter and connect to it
-ports = obd.scan_serial()
-logging.debug(f"number of ports found: {len(ports)}")
-connection = obd.OBD(ports[0])
+# ports = obd.scan_serial()
+# logging.debug(f"number of ports found: {len(ports)}")
+# connection = obd.OBD(ports[0])
+connection = obd.OBD() # autoconnect
 
 # prepare the command to query speed
 cmd = obd.commands.SPEED
