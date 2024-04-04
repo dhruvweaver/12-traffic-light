@@ -5,7 +5,7 @@ import serial
 
 # configure logging
 #     filemode: "w" is overwrite, "a" is append
-logging.basicConfig(level=logging.DEBUG, filename="obd_log.log", filemode="a", format="%(asctime)s : %(message)s")
+logging.basicConfig(level=logging.DEBUG, filename="/home/team12/obd_log.log", filemode="a", format="%(asctime)s : %(message)s")
 
 #configure the serial port
 ser = serial.Serial("/dev/ttyS0", 9600)
