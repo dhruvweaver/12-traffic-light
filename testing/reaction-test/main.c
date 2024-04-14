@@ -56,6 +56,31 @@ void closeImage() {
 }
 
 /*
+ * Gets pid of another process
+ */
+int get_pid(const char* name) {
+    char command[256];
+    sprintf(command, "pgrep %s", name);
+
+    FILE* fp = popen(command, "r");
+    if (fp == NULL) {
+        printf("Failed to run command\n");
+        return -1;
+    }
+
+    int pid;
+    if (fscanf(fp, "%d", &pid) != 1) {
+        printf("Process not found\n");
+        pid = -1;
+    } else {
+        printf("Found process with PID: %d\n", pid);
+    }
+
+    pclose(fp);
+    return pid;
+}
+
+/*
  * Given a path, this function presents an image and measures the time that it
  * takes a secondary function to set the global variable `flag`. It then closes
  * the image.
@@ -113,6 +138,7 @@ int main(int argc, char* argv[]) {
     // set up signal handler
     signal(SIGUSR1, handler);
 
+
     printf("\nProgram PID is: ");
     printf("%s", KGREEN);
     printf("%d\n\n", getpid());
@@ -131,6 +157,11 @@ int main(int argc, char* argv[]) {
 
     int times[test_n];
 
+    // get pid of python program running yolo
+    const char* name = "Python";
+    int pid = get_pid(name);
+    int running = (pid != -1);
+
     // run n tests, calling react() for each one
     for (int i = 0; i < test_n; i++) {
         printf("\nimage %d\n", i);
@@ -139,7 +170,12 @@ int main(int argc, char* argv[]) {
         snprintf(img_pth, sizeof(img_pth), "./images/light_%d.jpg", i);
         printf("path: %s\n", img_pth);
 
-        sleep(1);
+        // send a signal to the python program allowing it to continue
+        sleep(3);
+        if(pid >=0){
+            kill(pid,SIGUSR2);
+        }
+        printf("pid: %d\n", pid);
         times[i] = react(img_pth);
         printf("Test %d took %d milliseconds\n", i, times[i]);
     }
