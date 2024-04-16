@@ -14,8 +14,7 @@ while True:
     speed = 50.1238123123
     
     braking = "B"
-    sendData = f"{braking} {speed:0,.3f}\r\n"
-    sendData = sendData.zfill(9)
+    sendData = f"{braking} {speed:03:3f}\r\n"
     ser.write(bytes(sendData,'utf-8'))
     print(f"Sent: {sendData}")
   
