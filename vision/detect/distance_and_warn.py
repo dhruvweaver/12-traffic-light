@@ -6,6 +6,8 @@ from utility import *
 from PIL import Image
 import math
 import torch
+import serial
+import time
 
 # demo variables for OBD data
 camera_height = 4.5
@@ -13,6 +15,17 @@ speed = 35.0
 dist_to_light = 0.0
 light = 0
 
+# serial interpreter
+def parse(str):
+    if str[0] == 'B':
+        print('braking')
+    if str[0] == 'A':
+        print('not braking')
+
+    speed = float(str[2:8])
+    print(f'speed: {speed} mph')
+
+ser = serial.Serial('/dev/tty.usbserial-0001',9600,timeout=1,xonxoff=False)
 
 # warning functions
 def miles_to_km(miles):
@@ -175,6 +188,10 @@ while True:
 
             text = f"{light_type}: {conf:.2f}, Depth: {depth_value:.2f} meters"
             text_helper.putText(frame, text, (xmin, int(ymin - 0.05 * frame.shape[0])))
+
+            resp = ser.readline().decode("utf-8").strip()
+            print(f"Received: {resp}")
+            parse(resp)
 
             # convert distance to feet.
             # this could be simplified through the whole process
