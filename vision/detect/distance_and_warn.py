@@ -10,7 +10,7 @@ import torch
 # demo variables for OBD data
 camera_height = 4.5
 speed = 35.0
-dist_to_light = 120.0
+dist_to_light = 0.0
 light = 0
 
 
@@ -20,7 +20,9 @@ def miles_to_km(miles):
 
 
 def calc_dist_to_inter(dist):
-    return math.sqrt(camera_height**2 - dist**2)
+    dist = math.sqrt(camera_height**2 - dist**2)
+    print(f'Distance to intersection {dist}')
+    return dist
 
 
 def min_brake_dist_ft(speed):
@@ -40,6 +42,7 @@ def strong_warning():
 
 def brake_warning(speed):
     brake_dist = min_brake_dist_ft(speed)
+    print(f'Calculated brake distance: {brake_dist}')
     if (light > 0):
         if (brake_dist < dist_to_light):
             gentle_warning()
@@ -173,6 +176,8 @@ while True:
             text = f"{light_type}: {conf:.2f}, Depth: {depth_value:.2f} meters"
             text_helper.putText(frame, text, (xmin, int(ymin - 0.05 * frame.shape[0])))
 
+            # convert distance to feet.
+            # this could be simplified through the whole process
             dist_to_light = depth_value * 3.28084
             brake_warning(speed)
 
