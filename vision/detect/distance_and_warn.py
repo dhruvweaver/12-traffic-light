@@ -173,6 +173,7 @@ while True:
             text = f"{light_type}: {conf:.2f}, Depth: {depth_value:.2f} meters"
             text_helper.putText(frame, text, (xmin, int(ymin - 0.05 * frame.shape[0])))
 
+            dist_to_light = depth_value * 3.28084
             brake_warning(speed)
 
     cv2.imshow('Webcam Feed', frame)
