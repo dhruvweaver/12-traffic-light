@@ -84,10 +84,10 @@ while True:
 
     # Convert depth frame to meters by dividing by 1000
     depthframe = depthframe / 1000.0
-    
+
     cv2.imshow("depth", depthframe)
 #/////////////////////////////////////////////////////////
-    
+
     ret, frame = cap.read()
     if not ret:
         break
