@@ -11,7 +11,7 @@ ser = serial.Serial("/dev/ttyS0", 9600)
 
 while True:
     #send data to FPGA
-    speed = 250.1238123123
+    speed = 50.1238123123
     
     braking = "B"
     sendData = f"{braking} {speed:0,.3f}\r\n"
