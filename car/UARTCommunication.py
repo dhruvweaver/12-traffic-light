@@ -16,7 +16,7 @@ while True:
     braking = "B"
     sendData = f"{braking} {speed:0,.3f}\r\n"
     ser.write(bytes(sendData,'utf-8'))
-    print(f"Sent: {sendData}")
+    print(f"Sent: {sendData.zfill(7)}")
   
     #add delay
     time.sleep(1)
