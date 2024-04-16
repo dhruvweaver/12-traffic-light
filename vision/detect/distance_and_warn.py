@@ -142,7 +142,7 @@ while True:
     for *box, conf, cls in results.xyxy[0]:
         if int(cls) in [1, 2]:
             xmin, ymin, xmax, ymax = map(int, box)
-            light_type = 'red' if int(cls) == 1 else 'yellow'
+            light_type = 'red' if int(cls) == 1 else 'yellow' if int(cls) == 2 else 'green'
             print(f"Coordinates of detected {light_type} light: (xmin={xmin}, ymin={ymin}, xmax={xmax}, ymax={ymax})")
             print(f"Class Probability Score of detected {light_type} light: {conf}")
 
