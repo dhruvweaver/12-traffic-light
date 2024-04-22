@@ -80,10 +80,12 @@ while True:
     if isBraking:
         #logging.debug("Status: Braking ***********************") 
         sendData = f"B {speed:07.3f}\r\n"
+        print(sendData)
         ser.write(bytes(sendData,'utf-8'))
     else:
         #logging.debug("Status: Accelerating")
         sendData = f"A {speed:07.3f}\r\n"
+        print(sendData)
         ser.write(bytes(sendData,'utf-8'))
                 
     # add a delay between queries to avoid overwhelming the OBD system
