@@ -103,7 +103,7 @@ def quantization(title='optimize',
 if __name__ == '__main__':
 
   model_name = 'YoloV3'
-  file_path = '../weights/official_yolov3_weights_pytorch.pth'
+  file_path = '../../vision-prototype/custom-train/weights/best.pt'
 
   feature_test = ' float model evaluation'
   if args.quant_mode != 'float':
