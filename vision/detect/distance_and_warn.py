@@ -7,19 +7,22 @@ from PIL import Image
 import math
 import torch
 import serial
-import time
 
 # demo variables for OBD data
 camera_height = 4.5
 speed = 35.0
 dist_to_light = 0.0
 light = 0
+braking = False
+
 
 # serial interpreter
 def parse(str):
     if str[0] == 'B':
+        braking = True
         print('braking')
     if str[0] == 'A':
+        braking = False
         print('not braking')
 
     speed = float(str[2:8])
@@ -57,9 +60,9 @@ def brake_warning(speed):
     brake_dist = min_brake_dist_ft(speed)
     print(f'Calculated brake distance: {brake_dist}')
     if (light > 0):
-        if (brake_dist < dist_to_light):
+        if ((brake_dist < dist_to_light) | braking):
             gentle_warning()
-        else:
+        elif (not braking):
             strong_warning()
 
 # Configuration variables
