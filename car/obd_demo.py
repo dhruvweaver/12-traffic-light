@@ -13,7 +13,7 @@ ser = serial.Serial("/dev/ttyS0", 9600)
 
 speedData = [0] * 5
 speedDiff = [0] * 3
-speed = 0
+speed = 50
 
 # remove oldest speed from array, add current speed
 def updateSpeed(currentSpeed):
@@ -66,6 +66,8 @@ while True:
     # send command and recieve response
     #response = connection.query(obd.commands.SPEED)
     speed = randomSpeed(speed)
+    if speed < 0:
+        speed = 0
     #logging.debug(f"Driving speed: {speed} mile/h") 
                 
     # update current speed and speed difference
