@@ -1,0 +1,7 @@
+opencv-python
+depthai
+numpy
+Pillow
+torch
+serial
+obd

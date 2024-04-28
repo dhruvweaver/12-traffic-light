@@ -7,7 +7,6 @@ from PIL import Image
 import math
 import torch
 import serial
-from playsound import playsound
 
 # demo variables for OBD data
 camera_height = 4.5
@@ -51,12 +50,10 @@ def min_brake_dist_ft(speed):
 
 def gentle_warning():
     print('warning 😀')
-    playsound('./sound/gentle-warn.wav')
 
 
 def strong_warning():
     print("WARNING 😬")
-    playsound('./sound/urgent-warn.wav')
 
 
 def brake_warning(speed):
