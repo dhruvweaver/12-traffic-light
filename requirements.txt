@@ -4,4 +4,6 @@ numpy
 Pillow
 torch
 serial
-obd
+
+jupyterlab
+notebook

@@ -2,32 +2,7 @@
 This directory contains the code and output files of the computer vision component
 for the traffic light detection capstone project.
 
-### Table of Contents
-
-[Getting started](https://github.com/dhruvweaver/12-traffic-light#getting-started)
-
-[Training YOLOv3](https://github.com/dhruvweaver/12-traffic-light#training-yolov3)
-
-[Running YOLOv3](https://github.com/dhruvweaver/12-traffic-light#running-yolov3-model)
-
-_[Running YOLOv5 Demo](https://github.com/dhruvweaver/12-traffic-light#instructions-for-running-yolov5-model-for-demo-only) (legacy)_
-
 ## Getting started:
-To begin working you will need to clone this repository.
-Choose a directory you would like to work in (such as a 'development' directory).
-
-Then clone the repository into that directory.
-***You can also rename the repo to something more simple when you clone it, as shown:***
-```bash
-[foo@bar]$ cd development
-[foo@bar]$ git clone https://github.com/dhruvweaver/12-traffic-light.git capstone
-```
-
-You now have a local copy of the repo on your computer. Go to that directory:
-```bash
-[foo@bar]$ cd capstone
-```
-
 ### Set up miniconda environment:
 A conda environment allows you to install packages to your dev environment in a self contained space.
 This means that packages installed in your conda environment won't affect your other dependencies.
